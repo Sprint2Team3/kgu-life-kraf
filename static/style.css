@@ -37,6 +37,52 @@
   color: rgb(184, 184, 184) !important;
 }
 
+.custom-btn {
+  background: linear-gradient(45deg, #6229ff, #20c997);
+  color: white;
+  border: none;
+  transition: filter 0.3s ease;
+}
+
+.custom-btn:hover {
+  filter: brightness(0.8);
+}
+
+
+/* 전체 배경에 그라데이션 적용 */
+.gradient-background {
+  background: linear-gradient(to bottom, #cfebdc, #ffffff); /* 보라색에서 파란색으로 */
+  height: 100vh; /* 화면 전체 높이 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: filter 0.3s ease;}
+
+/* 카드 스타일 조정 */
+.card {
+  background-color: white; /* 카드 내부는 흰색 */
+  border-radius: 15px; /* 둥근 모서리 */
+}
+
+
+
+.close-btn {
+  position: fixed;
+  top: 30px;
+  right: 60px;
+  font-size: 20px;
+  color: #000000;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 20%;
+}
+
+.close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #000000;
+}
+
 .notices {
   white-space: nowrap;
   overflow: hidden;
