@@ -83,3 +83,8 @@
   color: #000000;
 }
 
+.notices {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

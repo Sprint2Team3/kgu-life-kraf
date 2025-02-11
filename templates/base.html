@@ -40,8 +40,12 @@
             <a class="nav-link h6 mx-3 {% if current_path == '/school' %}active{% endif %}" href="/school">학교생활</a>
           </li>
         </ul>
-  
-        <button type="button" class="btn btn-info ml-3 custom-rounded custom-btn " onclick="location.href='/login'">로그인</button>
+        {% if logined_email %}
+        <span class="navbar-text mr-3">{{ logined_email }}</span>
+        <button type="button" class="btn btn-outline-danger" onclick="logout()">로그아웃</button>
+        {% else %}
+        <button type="button" class="btn btn-info ml-3 custom-rounded custom-btn" onclick="location.href='/login'">로그인</button>
+        {% endif %}
       </div>
     </div>
   </nav>
@@ -50,6 +54,11 @@
 
     {% block content %}{% endblock %}
   </div>
+
+  <!--JavaScript Libraries-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!--Templates JavaScript-->
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

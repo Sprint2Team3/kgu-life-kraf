@@ -9,8 +9,13 @@
     <div class="card-body">
       <p style="text-align: center; font-weight: 400; " >학과 공지사항</p>
       <hr>
-      <p style="font-weight: 200;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis neque laudantium optio aliquid in asperiores alias architecto nulla cum autem excepturi eveniet enim, placeat quia perferendis adipisci explicabo inventore sunt.</p>
+      {% for notice in noticeList %}
+      <div>
+        <p class="notices">{{notice.title}}</p>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
+
 {% endblock %}
