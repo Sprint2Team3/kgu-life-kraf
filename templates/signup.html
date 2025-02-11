@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}회원가입 | 크구라이프{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center bg-info text-white">
+          <h4>회원가입</h4>
+        </div>
+        <div class="card-body">
+          <!-- 회원가입 폼 -->
+          <form id="signup-form">
+            <!-- 이메일 입력 -->
+            <div class="form-group mb-3">
+              <label for="email">이메일</label>
+              <div class="input-group">
+                <input type="text" id="email-input" class="form-control" placeholder="아이디를 입력하세요" required>
+                <div class="input-group-append">
+                  <span class="input-group-text">@kyonggi.ac.kr</span>
+                </div>
+              </div>
+              <!-- 이메일 유효성 오류 메시지 -->
+              <small id="email-error" class="form-text text-danger d-none">올바른 이메일을 입력하세요.</small>
+            </div>
+
+            <!-- 인증번호 발송 버튼 -->
+            <button type="button" id="send-code-btn" class="btn btn-secondary btn-block mb-3">인증번호 발송</button>
+
+            <!-- 비밀번호 입력 -->
+            <div class="form-group mb-3">
+              <label for="password">비밀번호</label>
+              <input type="password" id="password" class="form-control" placeholder="비밀번호를 입력하세요" required>
+            </div>
+
+            <!-- 회원가입 버튼 -->
+            <button type="submit" class="btn btn-info btn-block rounded-pill">회원가입</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// 이메일 유효성 검사
+document.getElementById('send-code-btn').addEventListener('click', function() {
+  const emailInput = document.getElementById('email-input');
+  const emailError = document.getElementById('email-error');
+  const emailValue = emailInput.value.trim();
+
+  // 이메일 유효성 검사
+  if (!emailValue || emailValue.includes('@') || emailValue.includes(' ')) {
+    emailInput.classList.add('is-invalid'); // 빨간색 테두리
+    emailError.classList.remove('d-none'); // 오류 메시지 표시
+  } else {
+    emailInput.classList.remove('is-invalid'); // 빨간색 테두리 제거
+    emailError.classList.add('d-none'); // 오류 메시지 숨김
+
+    // 인증번호 발송 로직 (백엔드와 연동 필요)
+    alert(`인증번호가 ${emailValue}@kyonggi.ac.kr로 발송되었습니다.`);
+  }
+});
+</script>
+{% endblock %}

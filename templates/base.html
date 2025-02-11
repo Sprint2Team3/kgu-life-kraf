@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+  
+  <title>{% block title %}크구라이프{% endblock %}</title>
+
+</head>
+<body>
+  <!-- 상단바 -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="./static/KRAFTON_Black.png" alt="KRAF 로고" width="100" height="25" class="d-inline-block align-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link h6 mx-3 {% if current_path == '/' %}active{% endif %}" href="/">홈</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link h6 mx-3 {% if current_path == '/map' %}active{% endif %}" href="/map">지도</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link h6 mx-3 {% if current_path == '/school' %}active{% endif %}" href="/school">학교생활</a>
+          </li>
+        </ul>
+  
+        <button type="button" class="btn btn-info ml-3 custom-rounded" onclick="location.href='/login'">로그인</button>
+      </div>
+    </div>
+  </nav>
+  
+
+  <!-- 본문 내용 -->
+  <div class="container mt-5">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>
