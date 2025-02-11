@@ -26,5 +26,9 @@
 }
 
 .custom-rounded::placeholder {
-  color: rgb(190, 189, 189) ;
+  color: rgb(184, 184, 184) !important;
+}
+
+.form-control::placeholder {
+  color: rgb(184, 184, 184) !important;
 }
