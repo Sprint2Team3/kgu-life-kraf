@@ -105,7 +105,9 @@ def logout():
     session.pop('logined_email', None)
     return jsonify({'success': True}), 200
 
-
+@app.route('/test')
+def test():
+    return render_template('test.html', current_path=request.path)
 
 
 if __name__ == '__main__':
