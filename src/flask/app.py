@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, jsonify
 import smtp
+import user_calendar
 import requests
 from datetime import timedelta
 from pymongo import MongoClient
@@ -104,6 +105,51 @@ def login_process():
 def logout():
     session.pop('logined_email', None)
     return jsonify({'success': True}), 200
+
+@app.route('/calendar', methods=['GET'])
+def get_calendar():
+    # 학사일정과 사용자 일정 데이터 가져오기
+    calendar_data = list(db.academic_calendar.find({}, {'_id': 0}))
+
+    academic_events = []
+    user_events = list(db.user_calendar.find({}, {'_id': 0})) 
+
+    # 학사일정 처리
+    for item in calendar_data:
+        date_range = item["date"]
+        event_name = item["event"]
+        academic_events.append(user_calendar.convert_event_format(date_range, event_name))
+
+    # 결과를 각 변수에 담아서 리턴
+    return jsonify({
+        'result': 'success', 
+        'academic_calendar': academic_events,
+        'user_calendar': user_events
+    })
+
+# 사용자 일정 입력 > db 삽입
+@app.route('/calendar', methods=['POST'])
+def add_event():
+    title_receive = request.form['title_give']
+    start_receive = request.form['start_give']
+    end_receive = request.form['end_give']
+
+    if not title_receive or not start_receive or not end_receive:
+        return jsonify({'error': '모든 필드를 입력하세요'}), 400
+
+
+    existing_event = db.user_calendar.find_one({'title': title_receive, 'start': start_receive, 'end': end_receive})
+
+        # 데이터가 존재하지 않으면 삽입
+    if not existing_event:
+        doc = {'title': title_receive, 'start': start_receive, 'end': end_receive}
+        db.user_calendar.insert_one(doc)
+        
+    return jsonify({'result':'success','message': '일정이 추가되었습니다'}), 201
+
+@app.route('/test5')
+def test5():
+    return render_template('calendar.html')
 
 @app.route('/test')
 def test():
