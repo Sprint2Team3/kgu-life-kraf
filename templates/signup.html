@@ -16,11 +16,10 @@
           <form id="signup-form">
             <!-- 이메일 입력 -->
             <div class="form-group">
-              <label for="email">이메일</label>
               <div class="input-group">
                 <input type="text" id="email-input" class="form-control" placeholder="아이디를 입력하세요" required>
                 <div class="input-group-append">
-                  <span class="input-group-text">@kyonggi.ac.kr</span>
+                  <span class="input-group-text pr-5" >@kyonggi.ac.kr</span>
                 </div>
               </div>
               <!-- 이메일 유효성 오류 메시지 -->
@@ -28,11 +27,10 @@
             </div>
 
             <!-- 인증번호 발송 버튼 -->
-            <button type="button" id="send-code-btn" class="btn btn-secondary btn-block mb-3" onclick="sendEmail()">인증번호 발송</button>
+            <button type="button" id="send-code-btn" class="btn btn-light btn-block mb-3" onclick="sendEmail()">인증번호 발송</button>
 
             <!-- 인증번호 입력 -->
             <div id="verification-section" class="d-none">
-              <label for="verification-code">인증번호</label>
               <div class="input-group position-relative">
                 <!-- 인증번호 입력칸 -->
                 <input type="text" id="verification-code" class="form-control custom-rounded pr-5" placeholder="인증번호를 입력하세요">
@@ -43,7 +41,7 @@
               <small id="verification-error" class="form-text text-danger d-none">인증번호가 올바르지 않습니다.</small>
 
               <!-- 인증 확인 버튼 -->
-              <button type="button" id="verify-code-btn" class="btn btn-secondary btn-block custom-rounded mt-3 mb-5" onclick="checkAuth()">인증 확인</button>
+              <button type="button" id="verify-code-btn" class="btn btn-secondary btn-block custom-rounded mt-3 mb-5" onclick="checkAuth()">확인</button>
             </div>
 
             <!-- 비밀번호 입력 -->
@@ -53,7 +51,7 @@
             </div>
 
             <!-- 회원가입 버튼 -->
-            <button type="button" id="signup-btn" class="btn btn-info btn-block custom-rounded" onclick="checkSignup()" disabled>회원가입</button>
+            <button type="button" id="signup-btn" class="btn btn-dark btn-block custom-rounded" onclick="checkSignup()" disabled>회원가입</button>
           </form>
         </div>
       </div>
