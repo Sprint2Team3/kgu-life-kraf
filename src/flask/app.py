@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
+from dotenv import load_dotenv
+import os
 
-app = Flask(__name__, template_folder='../../templates')
+load_dotenv()
+
+app = Flask(__name__, static_folder='../../static', template_folder='../../templates')
+
 
 # 기존 라우트
 @app.route('/')

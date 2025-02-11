@@ -9,17 +9,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-  
+
+
   <title>{% block title %}크구라이프{% endblock %}</title>
 
 </head>
 <body>
-  <!-- 상단바 -->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img src="./static/KRAFTON_Black.png" alt="KRAF 로고" width="100" height="25" class="d-inline-block align-top">
+        <img src="{{ url_for('static', filename='KRAFTON_Black.png') }}" alt="KRAF 로고" width="100" height="25" class="d-inline-block align-top">
       </a>
+    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,11 +42,9 @@
     </div>
   </nav>
   
-
-  <!-- 본문 내용 -->
-  <div class="container mt-5">
+  <div class="container mt-50">
     {% block content %}{% endblock %}
   </div>
-
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
