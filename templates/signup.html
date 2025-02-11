@@ -28,7 +28,7 @@
             </div>
 
             <!-- 인증번호 발송 버튼 -->
-            <button type="button" id="send-code-btn" class="btn btn-light btn-block mb-3 custom-rounded">인증번호 발송</button>
+            <button type="button" id="send-code-btn" class="btn btn-secondary btn-block mb-3" onclick="sendEmail()">인증번호 발송</button>
 
             <!-- 인증번호 입력 -->
             <div id="verification-section" class="d-none">
@@ -43,7 +43,7 @@
               <small id="verification-error" class="form-text text-danger d-none">인증번호가 올바르지 않습니다.</small>
 
               <!-- 인증 확인 버튼 -->
-              <button type="button" id="verify-code-btn" class="btn btn-secondary btn-block custom-rounded mt-3 mb-5">인증 확인</button>
+              <button type="button" id="verify-code-btn" class="btn btn-secondary btn-block custom-rounded mt-3 mb-5" onclick="checkAuth()">인증 확인</button>
             </div>
 
             <!-- 비밀번호 입력 -->
@@ -53,14 +53,13 @@
             </div>
 
             <!-- 회원가입 버튼 -->
-            <button type="button" id="signup-btn" class="btn btn-info btn-block custom-rounded" disabled>회원가입</button>
+            <button type="button" class="btn btn-info btn-block rounded-pill" onclick="checkSignup()">회원가입</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 {% endblock %}
 

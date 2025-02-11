@@ -36,3 +36,9 @@
 .form-control::placeholder {
   color: rgb(184, 184, 184) !important;
 }
+
+.notices {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
