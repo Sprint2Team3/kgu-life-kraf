@@ -28,7 +28,8 @@ def inject_logined_email():
 # 기존 라우트
 @app.route('/')
 def home():
-    return render_template('index.html', current_path=request.path)
+    noticeList = db.department_notice.find({}, {'_id': 0})
+    return render_template('index.html', current_path=request.path, noticeList = noticeList)
 
 @app.route('/map')
 def map_page():
@@ -103,6 +104,8 @@ def login_process():
 def logout():
     session.pop('logined_email', None)
     return jsonify({'success': True}), 200
+
+
 
 
 if __name__ == '__main__':
