@@ -5,13 +5,13 @@
 {% block content %}
 
 <div id="cards-box" class="card-columns">
-  <div class="card custom-rounded">
-    <div class="card-body">
-      <p style="text-align: center; font-weight: 400; " >학과 공지사항</p>
+  <div class="card custom-rounded col-md-12">
+    <div class="card-body" style="overflow: hidden;" >
+      <p class="mt-2" style="text-align: center; font-weight: 500; " > 학과 공지사항 </p>
       <hr>
       {% for notice in noticeList %}
       <div>
-        <p class="notices">{{notice.title}}</p>
+        <a class="notices mb-3" style="color: rgb(120, 120, 120);" href="{{notice.link}}" >{{notice.title}}</a>
       </div>
       {% endfor %}
     </div>
