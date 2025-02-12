@@ -352,25 +352,38 @@ function hide_study_place_div() {
     $('#seventh_lecture_building').hide();
 }
 
+function hide_library_detail() {
+    $('#library1_detail').hide();
+    $('#library2_detail').hide();
+    $('#library3_detail').hide();
+    $('#library4_detail').hide();
+}
+
 
 //지도 컨텐츠 선택 버튼
 window.select_shortCut = function() {
     $('#lecture_building').hide();
     $('#library').hide();
     $('#shortCut').show();
+    hide_library_detail()
     clear_lecture_building_markers()
     clear_library_markers()
     hide_study_place_div()
+    map.setCenter(new Tmapv3.LatLng(37.300597081698065, 127.0369839632937));
+    map.setZoom(16);
 }
 
 window.select_lecture_building = function() {
     $('#shortCut').hide();
     $('#library').hide();
     $('#lecture_building').show();
+    hide_library_detail()
     clearPolylines()
     clear_library_markers()
     add_lecture_building_marker()
     hide_study_place_div()
+    map.setCenter(new Tmapv3.LatLng(37.300597081698065, 127.0369839632937));
+    map.setZoom(16);
 }
 
 window.select_library = function() {
@@ -380,6 +393,8 @@ window.select_library = function() {
     clearPolylines()
     clear_lecture_building_markers()
     add_library_marker()
+    map.setCenter(new Tmapv3.LatLng(37.300597081698065, 127.0369839632937));
+    map.setZoom(16);
 }
 
 //지름길 세부 선택 버튼
@@ -454,18 +469,26 @@ window.lecture_building10 = function() {
 
 //도서관 선택 버튼
 window.library1 = function() {
+    hide_library_detail()
+    $('#library1_detail').show();
     map.setCenter(new Tmapv3.LatLng(37.30280487060318, 127.03617574985566));
 }
 
 window.library2 = function() {
+    hide_library_detail()
+    $('#library2_detail').show();
     map.setCenter(new Tmapv3.LatLng(37.30112912871873, 127.03556305515662));
 }
 
 window.library3 = function() {
+    hide_library_detail()
+    $('#library3_detail').show();
     map.setCenter(new Tmapv3.LatLng(37.29945958991451, 127.0337971711272));
 }
 
 window.library4 = function() {
+    hide_library_detail()
+    $('#library4_detail').show();
     map.setCenter(new Tmapv3.LatLng(37.30115276671149, 127.03917520441672));
 }
 
