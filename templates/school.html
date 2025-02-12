@@ -1,8 +1,61 @@
-{% extends "base.html" %}
-
-{% block title %}학교생활 | 크구라이프{% endblock %}
-
+{% extends "base.html" %} {% block title %}학교생활 | 크구라이프{% endblock %}
 {% block content %}
-<h1>학교생활 화면</h1>
-<p>여기는 학교생활 화면입니다.</p>
+<div class="container">
+  <!-- 헤더 -->
+  <div
+    class="d-flex justify-content-between align-items-center py-3 border-bottom"
+  >
+    <div><strong>고객센터</strong></div>
+    <nav>
+      <a href="#" class="mr-4 text-dark">자주 묻는 질문</a>
+      <a href="#" class="mr-4 text-dark">피해 사건 신고</a>
+      <a href="#" class="text-dark">토스의 보안</a>
+    </nav>
+  </div>
+
+  <!-- 검색 섹션 -->
+  <div class="text-center my-5">
+    <h2>자주 묻는 질문</h2>
+    <p class="text-muted">무엇이든 찾아보세요</p>
+  </div>
+
+  <!-- 메인 콘텐츠 -->
+  <div class="row">
+    <!-- 카테고리 목록 -->
+    <div class="col-md-3">
+      <ul class="list-unstyled">
+        <li><a href="#" class="text-primary font-weight-bold">질문 TOP</a></li>
+        <li><a href="#" class="text-dark">송금</a></li>
+        <li><a href="#" class="text-dark">계좌</a></li>
+        <li><a href="#" class="text-dark">카드</a></li>
+        <li><a href="#" class="text-dark">토스쇼핑</a></li>
+        <li><a href="#" class="text-dark">결제</a></li>
+        <li><a href="#" class="text-dark">주식</a></li>
+      </ul>
+    </div>
+
+    <!-- FAQ 리스트 -->
+    <div class="col-md-9">
+      <ul class="list-group">
+        <li class="list-group-item d-flex align-items-center">
+          <span class="mr-2 text-muted">Q</span>
+          <a href="#" class="text-dark">토스프라임을 해지하고 싶어요.</a>
+        </li>
+        <li class="list-group-item d-flex align-items-center">
+          <span class="mr-2 text-muted">Q</span>
+          <a href="#" class="text-dark"
+            >토스 앱에서 송금을 한 뒤 송금확인증은 어떻게 발급받나요?</a
+          >
+        </li>
+        <li class="list-group-item d-flex align-items-center">
+          <span class="mr-2 text-muted">Q</span>
+          <a href="#" class="text-dark"
+            >토스페이 결제 취소 / 환불이 필요해요.</a
+          >
+        </li>
+        <!-- 추가 항목 -->
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}

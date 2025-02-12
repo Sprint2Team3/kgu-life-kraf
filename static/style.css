@@ -1,19 +1,12 @@
-
-* { 
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, 
-  system-ui, Roboto, 
-  "Helvetica Neue", 
-  "Segoe UI", 
-  "Apple SD Gothic Neo", 
-  "Noto Sans KR", 
-  "Malgun Gothic", 
-  "Apple Color Emoji", 
-  "Segoe UI Emoji", 
-  "Segoe UI Symbol", 
-  sans-serif; 
+* {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 250;
 }
 
-.mt-100{
+.mt-100 {
   margin-top: 100px;
 }
 
@@ -42,7 +35,8 @@
 }
 
 .custom-rounded::placeholder {
-  color: rgb(184, 184, 184) !important;
+  color: rgb(0, 0, 0) !important;
+  font-weight: 300;
 }
 
 .form-control::placeholder {
@@ -60,23 +54,25 @@
   filter: brightness(0.8);
 }
 
-
 /* 전체 배경에 그라데이션 적용 */
 .gradient-background {
-  background: linear-gradient(to bottom, #cfebdc, #ffffff); /* 보라색에서 파란색으로 */
+  background: linear-gradient(
+    to bottom,
+    #cfebdc,
+    #ffffff
+  ); /* 보라색에서 파란색으로 */
   height: 100vh; /* 화면 전체 높이 */
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: filter 0.3s ease;}
+  transition: filter 0.3s ease;
+}
 
 /* 카드 스타일 조정 */
 .card {
   background-color: white; /* 카드 내부는 흰색 */
   border-radius: 15px; /* 둥근 모서리 */
 }
-
-
 
 .close-btn {
   position: fixed;
@@ -106,4 +102,16 @@
 
 .notices:hover {
   text-decoration: underline;
+}
+
+.row > col-md-3 > ul > li {
+  margin-bottom: 30px;
+}
+
+.fc-event-time {
+  display: none;
+}
+
+#calendar {
+  height: 100%;
 }
