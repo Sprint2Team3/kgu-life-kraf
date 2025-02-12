@@ -1,61 +1,202 @@
 {% extends "base.html" %} {% block title %}학교생활 | 크구라이프{% endblock %}
+
 {% block content %}
+
 <div class="container">
-  <!-- 헤더 -->
-  <div
-    class="d-flex justify-content-between align-items-center py-3 border-bottom"
-  >
-    <div><strong>고객센터</strong></div>
-    <nav>
-      <a href="#" class="mr-4 text-dark">자주 묻는 질문</a>
-      <a href="#" class="mr-4 text-dark">피해 사건 신고</a>
-      <a href="#" class="text-dark">토스의 보안</a>
-    </nav>
-  </div>
-
-  <!-- 검색 섹션 -->
-  <div class="text-center my-5">
-    <h2>자주 묻는 질문</h2>
-    <p class="text-muted">무엇이든 찾아보세요</p>
-  </div>
-
-  <!-- 메인 콘텐츠 -->
-  <div class="row">
-    <!-- 카테고리 목록 -->
-    <div class="col-md-3">
-      <ul class="list-unstyled">
-        <li><a href="#" class="text-primary font-weight-bold">질문 TOP</a></li>
-        <li><a href="#" class="text-dark">송금</a></li>
-        <li><a href="#" class="text-dark">계좌</a></li>
-        <li><a href="#" class="text-dark">카드</a></li>
-        <li><a href="#" class="text-dark">토스쇼핑</a></li>
-        <li><a href="#" class="text-dark">결제</a></li>
-        <li><a href="#" class="text-dark">주식</a></li>
-      </ul>
+<!-- 헤더 -->
+<div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+  <nav class="d-flex justify-content-between w-100">
+    <div class="flex-grow-1 mx-3 text-center" style="max-width: 200px">
+      <div id="hover" class="custom-rounded2 bg-skyblue mb-2 py-3">
+        <a href="#" class="d-block">
+          <img
+            src="{{ url_for('static', filename='/img/lmsIcon.png') }}"
+            alt="lms사이트아이콘"
+            width="120"
+            height="120"
+            class="d-inline-block"
+          />
+        </a>
+      </div>
+      <h6 class="mt-2">LMS</h6>
+      <p class="text-muted font-weight-light" style="font-size: smaller;" word-wrap: break-word">
+        동영상강의 수강 <br>
+        과제 제출∙강의자료∙공지사항 <br>
+        놓치지 않게 자주 확인해요.
+      </p>
     </div>
+    <div class="flex-grow-1 mx-3 text-center" style="max-width: 200px">
+      <div id="hover" class="custom-rounded2 bg-grey mb-2 py-3">
+        <a href="#" class="d-block">
+          <img
+            src="{{ url_for('static', filename='/img/kutisIcon.png') }}"
+            alt="kutis사이트아이콘"
+            width="120"
+            height="120"
+            class="d-inline-block"
+          />
+        </a>
+      </div>
+      <h6 class="mt-2">KUTIS</h6>
+      <p class="text-muted font-weight-light" style="font-size: smaller; word-wrap: break-word">
+        대학생활의 마이페이지 <br>
+        개인정보∙등록장학∙수강과 성적 관리<br>
+        각종 신청은 여기서 !</p>
+    </div>
+    <div class="flex-grow-1 mx-3 text-center" style="max-width: 200px">
+      <div id="hover" class="custom-rounded2 bg-yeondoo mb-2 py-3">
+        <a href="#" class="d-block">
+          <img
+            src="{{ url_for('static', filename='/img/barunIcon.png') }}"
+            alt="바른사이트아이콘"
+            width="120"
+            height="120"
+            class="d-inline-block"
+          />
+        </a>
+      </div>
+      <h6 class="mt-2">BARUN</h6>
+      <p class="text-muted font-weight-light" style="font-size: smaller; word-wrap: break-word">
+        비교과 프로그램 신청 <br>
+        봉사실적 등록 <br>
+        경험을 쌓고, KGU 포인트도 얻어봐요.</p>
+    </div>
+    <div class="flex-grow-1 mx-3 text-center" style="max-width: 200px">
+      <div id="hover" class="custom-rounded2 bg-beige mb-2 py-3">
+        <a href="#" class="d-block">
+          <img
+            src="{{ url_for('static', filename='/img/schoolIcon.png') }}"
+            alt="경기대사이트로고"
+            width="120"
+            height="120"
+            class="d-inline-block"
+          />
+        </a>
+      </div>
+      <h6 class="mt-2">KGU</h6>
+      <p class="text-muted font-weight-light" style="font-size: smaller; word-wrap: break-word">
+        경기대학교 공식 홈페이지<br>
+        주요 정보 제공∙소식 전달<br>
+        장학지원팀, 인재개발처 수시 체크!
+      </p>
+    </div>
+  </nav>
+</div>
 
-    <!-- FAQ 리스트 -->
-    <div class="col-md-9">
-      <ul class="list-group">
-        <li class="list-group-item d-flex align-items-center">
-          <span class="mr-2 text-muted">Q</span>
-          <a href="#" class="text-dark">토스프라임을 해지하고 싶어요.</a>
-        </li>
-        <li class="list-group-item d-flex align-items-center">
-          <span class="mr-2 text-muted">Q</span>
-          <a href="#" class="text-dark"
-            >토스 앱에서 송금을 한 뒤 송금확인증은 어떻게 발급받나요?</a
-          >
-        </li>
-        <li class="list-group-item d-flex align-items-center">
-          <span class="mr-2 text-muted">Q</span>
-          <a href="#" class="text-dark"
-            >토스페이 결제 취소 / 환불이 필요해요.</a
-          >
-        </li>
-        <!-- 추가 항목 -->
-      </ul>
+
+<div class="container mt-10">
+<!-- 메인 콘텐츠 -->
+<div class="text-center my-5">
+  <img
+  src="{{ url_for('static', filename='/img/smileCatFace.png') }}"
+  alt="경기대사이트로고"
+  width="100"
+  height="100"
+  class="d-inline-block"
+/>
+  <h2 class="mt-4 font-weight-bold">크구 가이드</h2>
+  <p class="text-muted">무엇이든 알려드려요</p>
+
+</div>
+<div class="row">
+  <!-- 카테고리 목록 -->
+  <div class="col-md-3">
+    <ul class="list-unstyled">
+      <li><a href="#" class="text-primary font-weight-bold category-item active">크구라이프</a></li>
+      <li><a href="#" class="text-dark category-item">필수 앱</a></li>
+      <li><a href="#" class="text-dark category-item">수강신청</a></li>
+      <li><a href="#" class="text-dark category-item">KGU 포인트 ?</a></li>
+      <li><a href="#" class="text-dark category-item">랄라</a></li>
+      <li><a href="#" class="text-dark category-item">룰루</a></li>
+      <li><a href="#" class="text-dark category-item">히히</a></li>
+    </ul>
+  </div>
+  <!-- FAQ -->
+  <div class="col-md-9">
+    <div class="faq-content">
+      <div id="faq-크구라이프" class="faq-item" style="display: none;">
+        <h3>크구라이프 제목</h3>
+        <p>크구라이프에 대한 상세 내용이 여기에 들어갑니다.</p>
+      </div>
+      <div id="faq-필수 앱" class="faq-item" style="display: none;">
+        <h3>필수 앱 관련 제목</h3>
+        <p>필수 앱에 대한 상세 내용이 여기에 들어갑니다.</p>
+      </div>
+      <div id="faq-수강신청" class="faq-item" style="display: none;">
+        <h3>수강신청 관련 제목</h3>
+        <p>수강신청에 대한 상세 내용이 여기에 들어갑니다.</p>
+      </div>
+      <div id="faq-KGU 포인트 ?" class="faq-item" style="display: none;">
+        <h3>KGU 포인트 관련 제목</h3>
+        <p>KGU포인트에 대한 상세 내용이 여기에 들어갑니다.</p>
+      </div>
+      <div id="faq-랄라" class="faq-item" style="display: none;">
+        <h3>랄라 관련 제목</h3>
+        <p>랄라에 대한 상세 내용이 여기에 들어갑니다.</p>
+      </div>
+      <div id="faq-룰루" class="faq-item" style="display: none;">
+        <h3>룰루 관련 제목</h3>
+        <p>룰루에 대한 상세 내용이 여기에 들어갑니다.</p>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- school.html CSS 스타일 추가 -->
+<style>
+  .category-item {
+    display: block;
+    padding: 15px;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    
+  }
+  
+  .category-item:hover {
+    background-color: #f0f0f0;
+    text-decoration: none;
+  }
+  
+  .category-item.active {
+    font-weight: bold;
+    background-color: #f1f1f1;
+  }
+
+  .faq-item {
+    margin-bottom: 20px;
+  }
+
+  .faq-item h3 {
+    margin-bottom: 10px;
+  }
+</style>
+
+<!-- school.html JavaScript 추가 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const defaultTopic = '크구라이프';
+    const defaultFaqContent = document.getElementById(`faq-${defaultTopic}`);
+    if (defaultFaqContent) defaultFaqContent.style.display = 'block';
+
+    document.querySelectorAll('.category-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const topic = this.textContent.trim();
+        
+        document.querySelectorAll('.faq-item').forEach(el => el.style.display = 'none');
+        
+        const faqContent = document.getElementById(`faq-${topic}`);
+        if (faqContent) faqContent.style.display = 'block';
+
+        document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+        
+        this.classList.add('active');
+      });
+    });
+  });
+</script>
+
+
+</div>
+
 {% endblock %}
