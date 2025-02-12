@@ -6,6 +6,7 @@ from datetime import timedelta
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
+import account
 
 #.env파일 로드
 load_dotenv()
@@ -56,9 +57,10 @@ def signup_process():
     json_data = request.get_json()
     email = json_data.get('email')
     PW = json_data.get('PW')
+    hashed_PW = account.hash_password(PW)
     doc = {
         'email' : email,
-        'PW' : PW
+        'PW' : hashed_PW
     }
     db.user.insert_one(doc)
 
@@ -76,8 +78,9 @@ def sendEmail():
 @app.route('/check-auth', methods=['POST'])
 def checkAuth():
     json_data = request.get_json()
+    email = json_data.get('email')
     authCode = json_data.get('authCode')
-    if authCode == session.get('authCode') :
+    if authCode == session.get('authCode') and email == session.get('email') :
         return jsonify({'success': True}), 200
     return jsonify({'success': False}), 200
 
@@ -97,7 +100,7 @@ def login_process():
     id = email.split('@')[0]
     checkPW = db.user.find_one({'email': id}, {'PW': 1, '_id': 0})
     PW = json_data.get('PW')
-    if checkPW and PW == checkPW['PW'] :
+    if checkPW and account.check_password(PW, checkPW['PW']) :
         session['logined_email'] = id
         return jsonify({'success': True}), 200
     return jsonify({'success': False}), 200

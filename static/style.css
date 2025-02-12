@@ -177,6 +177,14 @@
   text-align: center;
 }
 
+/* footer */
+#footer_sub {
+  height: 100px;
+}
+
+#footer_main {
+  text-align: center;
+}
 /* ### calendar design ### */
 :root {
   --fc-event-bg-color: none;
