@@ -160,6 +160,5 @@ def test():
 def test3():
     return render_template('test3.html', current_path=request.path)
 
-
 if __name__ == '__main__':
     app.run(debug=True)
