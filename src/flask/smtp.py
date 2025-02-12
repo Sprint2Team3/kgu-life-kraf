@@ -9,6 +9,9 @@ def send_email(email) :
     full_email = email + '@kyonggi.ac.kr'
     authCode = str(random.randint(100000, 999999))
 
+    session.pop('authCode', None)
+    session.pop('email', None)
+
     #.env파일 로드
     load_dotenv()
     SMTP_Password = os.getenv('SMTP_PASSWORD')
@@ -24,9 +27,8 @@ def send_email(email) :
     msg['Subject'] = 'KRAF 코드는 '+ authCode + '입니다.'
 
     smtp.sendmail('ysh0621000@gmail.com', full_email, msg.as_string())
-
-    session.pop('authCode', None)
     
     session['authCode'] = authCode
+    session['email'] = email
 
     smtp.quit()
