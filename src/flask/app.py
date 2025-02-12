@@ -22,6 +22,8 @@ client = MongoClient(db_uri)
 db = client.kraf
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 
+#TMAP API Key 가져오기
+TMAP_API_key = os.getenv('TMAP_API_KEY')
 @app.context_processor
 def inject_logined_email():
     return {'logined_email': session.get('logined_email')}
@@ -34,7 +36,7 @@ def home():
 
 @app.route('/map')
 def map_page():
-    return render_template('map.html', current_path=request.path)
+    return render_template('map.html', current_path=request.path, TMAP_API_key = TMAP_API_key)
 
 @app.route('/school')
 def school_page():
@@ -75,7 +77,7 @@ def sendEmail():
 def checkAuth():
     json_data = request.get_json()
     authCode = json_data.get('authCode')
-    if authCode == session.get('authcode') :
+    if authCode == session.get('authCode') :
         return jsonify({'success': True}), 200
     return jsonify({'success': False}), 200
 
@@ -95,8 +97,7 @@ def login_process():
     id = email.split('@')[0]
     checkPW = db.user.find_one({'email': id}, {'PW': 1, '_id': 0})
     PW = json_data.get('PW')
-    print(email, id, checkPW, PW)
-    if PW == checkPW['PW'] :
+    if checkPW and PW == checkPW['PW'] :
         session['logined_email'] = id
         return jsonify({'success': True}), 200
     return jsonify({'success': False}), 200
@@ -154,6 +155,10 @@ def test5():
 @app.route('/test')
 def test():
     return render_template('test.html', current_path=request.path)
+
+@app.route('/test3')
+def test3():
+    return render_template('test3.html', current_path=request.path)
 
 
 if __name__ == '__main__':
