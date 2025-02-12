@@ -164,3 +164,75 @@ window.logout = function() {
         }
     });
 }
+
+// 날짜 포맷을 ISO 8601로 변환하는 함수
+function convertToISO(dateStr) {
+  let date = new Date(dateStr);
+  return date.toISOString();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var calendarEl = document.getElementById("calendar");
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+    headerToolbar: {
+      left: "prev today",
+      center: "title",
+      right: "next",
+    },
+    events: function (info, successCallback, failureCallback) {
+      // 서버에서 데이터를 가져와서 FullCalendar에 맞는 형식으로 변환
+      $.ajax({
+        type: "GET",
+        url: "/calendar",
+        success: function (response) {
+          let events = [
+            ...response.academic_calendar,
+            ...response.user_calendar,
+          ].map(function (item) {
+            return {
+              title: item.title,
+              start: convertToISO(item.start), // ISO 형식으로 변환
+              end: convertToISO(item.end), // ISO 형식으로 변환
+            };
+          });
+          successCallback(events); // FullCalendar에 이벤트 배열을 전달
+        },
+        error: function () {
+          failureCallback();
+        },
+      });
+    },
+  });
+
+  calendar.render();
+
+  // 일정 추가하는 함수
+  function postUser() {
+    var title = $("#title").val(); // 수정된 부분
+    var start = $("#start").val(); // 수정된 부분
+    var end = $("#end").val(); // 수정된 부분
+
+    $.ajax({
+      type: "POST",
+      url: "/calendar",
+      data: {
+        title_give: title,
+        start_give: start,
+        end_give: end,
+      },
+      success: function (response) {
+        alert(response.message);
+        calendar.refetchEvents(); // 일정 추가 후 달력 새로고침
+      },
+      error: function () {
+        alert("일정을 추가하는데 실패했습니다");
+      },
+    });
+  }
+
+  // 일정 추가 버튼 이벤트
+  $("#addEventButton").on("click", function () {
+    postUser();
+  });
+});
