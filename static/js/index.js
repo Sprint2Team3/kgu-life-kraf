@@ -33,6 +33,9 @@ window.sendEmail = function() {
                     // 인증번호 발송 로직
                     alert(`인증번호가 ${emailValue}@kyonggi.ac.kr 로 발송되었습니다.`);
 
+                    // 인증번호 입력 섹션 표시
+                    verificationSection.classList.remove('d-none');
+
                     $.ajax({
                         url: '/send-email',
                         type: 'POST',
@@ -54,9 +57,6 @@ window.sendEmail = function() {
                 isEmailAvailable = false;
             }
         });
-
-        // 인증번호 입력 섹션 표시
-        verificationSection.classList.remove('d-none');
     }
 }
 // 인증번호 확인
@@ -72,14 +72,21 @@ window.checkAuth = function() {
         contentType: 'application/json',
         data: JSON.stringify({ authCode: verificationCode }),
         success: function (response) {
-            verificationError.classList.add('d-none'); // 오류 메시지 숨김
-            verificationCheckIcon.classList.remove('d-none'); // 체크 아이콘 표시
-            isAuth = true;
+            if(response.success) {
+                alert("인증번호가 확인되었습니다.")
+                verificationError.classList.add('d-none'); // 오류 메시지 숨김
+                verificationCheckIcon.classList.remove('d-none'); // 체크 아이콘 표시
+                isAuth = true;
+                signupBtn.disabled = false;
+            } else {
+                verificationError.classList.remove('d-none'); // 오류 메시지 표시
+                verificationCheckIcon.classList.add('d-none'); // 체크 아이콘 숨김
+                isAuth = false;
+                signupBtn.disabled = true;
+            }
         },
         error: function () {
-            verificationError.classList.remove('d-none'); // 오류 메시지 표시
-            verificationCheckIcon.classList.add('d-none'); // 체크 아이콘 숨김
-            isAuth = false;
+            alert("인증과정에서 오류가 발생하였습니다.")
         }
     });
 }
@@ -125,8 +132,21 @@ window.login = function() {
 
     const email = $('#username').val();
     const PW = $('#password').val();
+    var emailTest =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-    //회원가입 프로세스
+    //유효성 검사
+    if(!email) {
+        alert("이메일을 입력해주세요.");
+        return;
+    } else if (!emailTest.test(email)) {
+        alert("아이디를 이메일 형식으로 입력해주세요.")
+        return;
+    } else if (!PW) {
+        alert("패스워드를 입력해주세요.")
+        return;
+    }
+
+    //로그인 프로세스
     $.ajax({
         url: '/login-process',
         type: 'POST',
@@ -140,6 +160,9 @@ window.login = function() {
                 alert("로그인에 실패했습니다.")
                 return false;
             }
+        },
+        error: function() {
+            alert('로그인 도중 오류가 발생했습니다.')
         }
     });
 }

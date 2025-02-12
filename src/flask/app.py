@@ -75,7 +75,7 @@ def sendEmail():
 def checkAuth():
     json_data = request.get_json()
     authCode = json_data.get('authCode')
-    if authCode == session.get('authcode') :
+    if authCode == session.get('authCode') :
         return jsonify({'success': True}), 200
     return jsonify({'success': False}), 200
 
@@ -95,8 +95,7 @@ def login_process():
     id = email.split('@')[0]
     checkPW = db.user.find_one({'email': id}, {'PW': 1, '_id': 0})
     PW = json_data.get('PW')
-    print(email, id, checkPW, PW)
-    if PW == checkPW['PW'] :
+    if checkPW and PW == checkPW['PW'] :
         session['logined_email'] = id
         return jsonify({'success': True}), 200
     return jsonify({'success': False}), 200
@@ -154,6 +153,10 @@ def test5():
 @app.route('/test')
 def test():
     return render_template('test.html', current_path=request.path)
+
+@app.route('/test3')
+def test3():
+    return render_template('test3.html', current_path=request.path)
 
 
 if __name__ == '__main__':
