@@ -138,25 +138,26 @@
   filter: brightness(0.9);
 }
 /* map CSS */
-.map_button {
+.map_div {
   width: 100%;
   margin: 1% 5%;
+  text-align: center;
 }
 
-.shortCut_button {
-  width: 10%;
-  height: auto;
-  margin: 1%;
+.shortCut_div {
+  width: 100%;
+  margin: 1% 5%;
+  text-align: center;
 }
 
-.lecture_building_button {
-  width: 10%;
-  height: auto;
-  margin: 1%;
+.lecture_building_div {
+  width: 100%;
+  margin: 1% 5%;
+  text-align: center;
 }
 
-.library_button {
-  width: 10%;
-  height: auto;
-  margin: 1%;
+.library_div {
+  width: 100%;
+  margin: 1% 5%;
+  text-align: center;
 }

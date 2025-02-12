@@ -7,57 +7,69 @@
 <script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey={{TMAP_API_key}}"></script>
 <div class="d-flex">
     <div id="map_div"></div>
-    <div style="width: 25%;">
-        <button class="map_button" onclick="select_shortCut()">지름길</button>
-        <button class="map_button" onclick="select_lecture_building()">강의동</button>
-        <button class="map_button" onclick="select_library()">공부장소</button>
-        <div class="mt-4 ml-4" id="agora" style="display: none;">
+    <div class="ml-4" style="width: 25%;">
+        <div class="map_div" onclick="select_shortCut()">지름길</div>
+        <div class="map_div" onclick="select_lecture_building()">강의동</div>
+        <div class="map_div" onclick="select_library()">공부장소</div>
+        <hr>
+        <div class="mt-4" id="agora" style="display: none;">
             <h1>아고라</h1>
             <p>가나다라마ㅏ바ㅏ사ㅏ아아자ㅏ자ㅏㅏㅏ나ㅏ차ㅏㅏㅐ자자ㅏㅇ다리ㅏ개ㅏ파ㅣ나ㅣㄷ다랆ㄷ러데ㅐㅓ;ㅍ너ㅓ;ㅓㅍㄷ</p>
         </div>
-        <div class="mt-4 ml-4" id="central_library" style="display: none;">
+        <div class="mt-4" id="central_library" style="display: none;">
             <h1>종합도서관</h1>
             <p>가나다라마ㅏ바ㅏ사ㅏ아아자ㅏ자ㅏㅏㅏ나ㅏ차ㅏㅏㅐ자자ㅏㅇ다리ㅏ개ㅏ파ㅣ나ㅣㄷ다랆ㄷ러데ㅐㅓ;ㅍ너ㅓ;ㅓㅍㄷ</p>
         </div>
-        <div class="mt-4 ml-4" id="second_lecture_building" style="display: none;">
+        <div class="mt-4" id="second_lecture_building" style="display: none;">
             <h1>2강의동</h1>
             <p>가나다라마ㅏ바ㅏ사ㅏ아아자ㅏ자ㅏㅏㅏ나ㅏ차ㅏㅏㅐ자자ㅏㅇ다리ㅏ개ㅏ파ㅣ나ㅣㄷ다랆ㄷ러데ㅐㅓ;ㅍ너ㅓ;ㅓㅍㄷ</p>
         </div>
-        <div class="mt-4 ml-4" id="seventh_lecture_building" style="display: none;">
+        <div class="mt-4" id="seventh_lecture_building" style="display: none;">
             <h1>7강의동</h1>
             <p>가나다라마ㅏ바ㅏ사ㅏ아아자ㅏ자ㅏㅏㅏ나ㅏ차ㅏㅏㅐ자자ㅏㅇ다리ㅏ개ㅏ파ㅣ나ㅣㄷ다랆ㄷ러데ㅐㅓ;ㅍ너ㅓ;ㅓㅍㄷ</p>
         </div>
+        <div id="shortCut" style="display: none;">
+            <div class="shortCut_div" onclick="shortCut1()">지름길1</div>
+            <div class="shortCut_div" onclick="shortCut2()">지름길2</div>
+            <div class="shortCut_div" onclick="shortCut3()">지름길3</div>
+            <div class="shortCut_div" onclick="shortCut4()">지름길4</div>
+        </div>
+        <div id="lecture_building" style="display: none;">
+            <div>
+                <div class="lecture_building_div" onclick="lecture_building1()">1.진리관</div>
+                <div class="lecture_building_div" onclick="lecture_building2()">2.성신관</div>
+                <div class="lecture_building_div" onclick="lecture_building3()">3.애경관</div>
+                <div class="lecture_building_div" onclick="lecture_building4()">4.예지관</div>
+                <div class="lecture_building_div" onclick="lecture_building5()">5.덕문관</div>
+            </div>
+            <div>
+                <div class="lecture_building_div" onclick="lecture_building6()">6.광교관</div>
+                <div class="lecture_building_div" onclick="lecture_building7()">7.집현관</div>
+                <div class="lecture_building_div" onclick="lecture_building8()">8.육영관</div>
+                <div class="lecture_building_div" onclick="lecture_building9()">9.호연관</div>
+                <div class="lecture_building_div" onclick="lecture_building10()">10.제2공학관</div>
+            </div>
+        </div>
+        <div id="library" >
+            <div class="library_div" onclick="library1()">아고라</div>
+            <div id="library1_detail" style="display: none;">
+                <p>cdaocvjapijvpvkaienpinvpinepi</p>
+            </div>
+            <div class="library_div" onclick="library2()">중앙도서관</div>
+            <div id="library2_detail" style="display: none;">
+                <p>cdaocvjapijvpvkaienpinvpinepi</p>
+            </div>
+            <div class="library_div" onclick="library3()">2강의동</div>
+            <div id="library3_detail" style="display: none;">
+                <p>cdaocvjapijvpvkaienpinvpinepi</p>
+            </div>
+            <div class="library_div" onclick="library4()">7강의동</div>
+            <div id="library4_detail" style="display: none;">
+                <p>cdaocvjapijvpvkaienpinvpinepi</p>
+            </div>
+        </div>
     </div>
 </div>
-<div>
-    <div id="shortCut" style="display: none;">
-        <button class="shortCut_button" onclick="shortCut1()">지름길1</button>
-        <button class="shortCut_button" onclick="shortCut2()">지름길2</button>
-        <button class="shortCut_button" onclick="shortCut3()">지름길3</button>
-        <button class="shortCut_button" onclick="shortCut4()">지름길4</button>
-    </div>
-    <div id="lecture_building" style="display: none;">
-        <div>
-            <button class="lecture_building_button" onclick="lecture_building1()">1강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building2()">2강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building3()">3강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building4()">4강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building5()">5강의동</button>
-        </div>
-        <div>
-            <button class="lecture_building_button" onclick="lecture_building6()">6강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building7()">7강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building8()">8강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building9()">9강의동</button>
-            <button class="lecture_building_button" onclick="lecture_building10()">10강의동</button>
-        </div>
-    </div>
-    <div id="library" style="display: none;">
-        <button class="library_button" onclick="library1()">아고라</button>
-        <button class="library_button" onclick="library2()">중앙도서관</button>
-        <button class="library_button" onclick="library3()">2강의동</button>
-        <button class="library_button" onclick="library4()">7강의동</button>
-    </div>
-</div>
+
 <script src="{{ url_for('static', filename='js/map.js') }}"></script>
 {% endblock %}
