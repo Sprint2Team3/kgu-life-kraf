@@ -10,6 +10,10 @@
   margin-top: 100px;
 }
 
+.mt-80 {
+  margin-top: 80px;
+}
+
 .mt-50 {
   margin-top: 50px;
 }
@@ -24,6 +28,17 @@
 
 .mt-10 {
   margin-top: 10px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+.mb-100 {
+  margin-bottom: 100px;
+}
+
+.mb-200 {
+  margin-bottom: 200px;
 }
 
 .pt-10 {

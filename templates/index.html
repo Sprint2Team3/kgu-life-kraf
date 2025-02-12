@@ -22,7 +22,10 @@ block content %}
           <hr />
           {% for notice in noticeList %}
           <div>
-            <a class="notices d-block mb-2 text-muted" href="{{notice.link}}"
+            <a
+              class="notices d-block mb-2 text-muted"
+              href="{{notice.link}}"
+              style="font-weight: 200"
               >{{notice.title}}</a
             >
           </div>
