@@ -137,3 +137,26 @@
 #hover:hover {
   filter: brightness(0.9);
 }
+/* map CSS */
+.map_button {
+  width: 100%;
+  margin: 1% 5%;
+}
+
+.shortCut_button {
+  width: 10%;
+  height: auto;
+  margin: 1%;
+}
+
+.lecture_building_button {
+  width: 10%;
+  height: auto;
+  margin: 1%;
+}
+
+.library_button {
+  width: 10%;
+  height: auto;
+  margin: 1%;
+}
