@@ -36,7 +36,9 @@ def insert_academic_calendar() :
     data = requests.get('https://www.kyonggi.ac.kr/www/selectTnSchafsSchdulListUS.do?key=5695&sc1=10', headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
 
-    calendars = soup.select('#sc_con_202503 ul.info_box__list li.info_box__item')
+    #calendars = soup.select('#sc_con_202503 ul.info_box__list li.info_box__item')
+    calendars = soup.select('.schedule_content__group .academic_info_box ul.info_box__list li.info_box__item')
+
 
     for calendar in calendars:
         date = calendar.select_one('div.info_box__date').get_text(strip=True)
