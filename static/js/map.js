@@ -414,6 +414,7 @@ window.shortCut1 = function () {
   shortCut1_addPolyline();
   longCut1_addPolyline();
   map.setCenter(new Tmapv3.LatLng(37.30257292254887, 127.03595005211517));
+  map.setZoom(16);
 };
 
 window.shortCut2 = function () {
@@ -421,6 +422,7 @@ window.shortCut2 = function () {
   shortCut2_addPolyline();
   longCut2_addPolyline();
   map.setCenter(new Tmapv3.LatLng(37.299122179180586, 127.0420953647245));
+  map.setZoom(16);
 };
 
 window.shortCut3 = function () {
@@ -428,6 +430,7 @@ window.shortCut3 = function () {
   shortCut3_addPolyline();
   longCut3_addPolyline();
   map.setCenter(new Tmapv3.LatLng(37.300196258865846, 127.03653824743785));
+  map.setZoom(16);
 };
 
 window.shortCut4 = function () {
@@ -435,6 +438,7 @@ window.shortCut4 = function () {
   shortCut4_addPolyline();
   longCut4_addPolyline();
   map.setCenter(new Tmapv3.LatLng(37.2993822357316, 127.03915736783951));
+  map.setZoom(16);
 };
 
 //강의동 선택 버튼
