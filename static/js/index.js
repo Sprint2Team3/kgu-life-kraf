@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
           info.event.start.toLocaleDateString() !==
             info.event.end.toLocaleDateString()
             ? `${info.event.start.toLocaleDateString()} - ${info.event.end.toLocaleDateString()}`
-            : info.event.start.toLocaleDateString()
+            : info.event.title // 단기 일정은 이벤트 이름 출력
         }`,
         placement: "bottom",
         offset: [0, 0],
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const colors = ["#d0fccc", "#fce9cf", "#dad6fc", "#ead4d4"]; //색상 배열
+const colors = ["#cdf3de", "#d3d6ee", "#faead4", "#fbd6df"]; //색상 배열
 
 // 색상을 순차적으로 변경
 function updateEventColors() {
