@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/static/img/favicon.ico">
+    <link rel="icon" href="/static/img/favicon.ico" />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
@@ -26,7 +26,7 @@
 
     <title>{% block title %}크구라이프{% endblock %}</title>
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <nav
       class="navbar navbar-expand-lg navbar-light"
       style="background-color: #ffffff"
@@ -99,15 +99,24 @@
       </div>
     </nav>
 
-    <div class="container mt-30">{% block content %}{% endblock %}</div>
-    <div>
-      <div class="mt-100" id="footer_sub">
-        <hr>
+    <main class="flex-grow-1">
+      <div class="container mt-30">{% block content %}{% endblock %}</div>
+    </main>
+
+    <footer class="mt-auto py-3">
+      <div class="container">
+        <hr />
+        <div style="font-size: small; text-align: center">
+          <p class="text-muted mt-30">
+            <span>
+              김하린. leanonaz@gmail.com 윤서준. ysh062100@gmail.com 이영선.
+              e0sunee882@gmail.com<br />
+              Copyright 2025. All Rights Reserved.
+            </span>
+          </p>
+        </div>
       </div>
-      <div id="footer_main">
-        <p>김하린 leanonaz@gmail.com 윤서준 ysh062100@gmail.com 이영선 e0sunee882@gmail.com</p>
-      </div>
-    </div>
+    </footer>
 
     <!--JavaScript Libraries-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
