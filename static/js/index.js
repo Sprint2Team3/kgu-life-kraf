@@ -57,67 +57,42 @@ window.sendEmail = function () {
   }
 };
 // 인증번호 확인
-window.checkAuth = function () {
-  const verificationCode = document
-    .getElementById("verification-code")
-    .value.trim();
-  const verificationError = document.getElementById("verification-error");
-  const verificationCheckIcon = document.getElementById(
-    "verification-check-icon"
-  );
-  const signupBtn = document.getElementById("signup-btn");
+window.checkAuth = function() {
+    const verificationCode = document.getElementById('verification-code').value.trim();
+    const verificationError = document.getElementById('verification-error');
+    const verificationCheckIcon = document.getElementById('verification-check-icon');
+    const signupBtn = document.getElementById('signup-btn');
+    email = $('#email-input').val();
 
-  // AJAX로 이메일 중복 확인 요청
-  $.ajax({
-    url: "/check-auth",
-    type: "POST",
-    contentType: "application/json",
-    data: JSON.stringify({ authCode: verificationCode }),
-    success: function (response) {
-      if (response.success) {
-        alert("인증번호가 확인되었습니다.");
-        verificationError.classList.add("d-none"); // 오류 메시지 숨김
-        verificationCheckIcon.classList.remove("d-none"); // 체크 아이콘 표시
-        isAuth = true;
-        signupBtn.disabled = false;
-      } else {
-        verificationError.classList.remove("d-none"); // 오류 메시지 표시
-        verificationCheckIcon.classList.add("d-none"); // 체크 아이콘 숨김
-        isAuth = false;
-        signupBtn.disabled = true;
-      }
-    },
-    error: function () {
-      alert("인증과정에서 오류가 발생하였습니다.");
-    },
-  });
-};
-// 인증번호 확인
-window.checkAuth = function () {
-  verificationCode = document.getElementById("verification-code").value.trim();
-  const verificationError = document.getElementById("verification-error");
-  const verificationCheckIcon = document.getElementById(
-    "verification-check-icon"
-  );
-  const signupBtn = document.getElementById("signup-btn");
 
-  $.ajax({
-    url: "/check-auth",
-    type: "POST",
-    contentType: "application/json",
-    data: JSON.stringify({ authCode: verificationCode }),
-    success: function (response) {
-      verificationError.classList.add("d-none"); // 오류 메시지 숨김
-      verificationCheckIcon.classList.remove("d-none"); // 체크 아이콘 표시
-      isAuth = true;
-    },
-    error: function () {
-      verificationError.classList.remove("d-none"); // 오류 메시지 표시
-      verificationCheckIcon.classList.add("d-none"); // 체크 아이콘 숨김
-      isAuth = false;
-    },
-  });
-};
+    $.ajax({
+        url: '/check-auth',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ email: email, authCode: verificationCode }),
+        success: function (response) {
+            if(response.success) {
+                alert("인증번호가 확인되었습니다.")
+                verificationError.classList.add('d-none'); // 오류 메시지 숨김
+                verificationCheckIcon.classList.remove('d-none'); // 체크 아이콘 표시
+                isAuth = true;
+                signupBtn.disabled = false;
+                $('#email-input').prop("disabled", true);
+                $('#send-code-btn').prop("disabled", true);
+                $('#verification-code').prop("disabled", true);
+                $('#verify-code-btn').prop("disabled", true);
+            } else {
+                verificationError.classList.remove('d-none'); // 오류 메시지 표시
+                verificationCheckIcon.classList.add('d-none'); // 체크 아이콘 숨김
+                isAuth = false;
+                signupBtn.disabled = true;
+            }
+        },
+        error: function () {
+            alert("인증과정에서 오류가 발생하였습니다.")
+        }
+    });
+}
 
 //회원가입
 window.checkSignup = function () {
@@ -215,20 +190,6 @@ window.logout = function () {
   });
 };
 
-// 로그인 상태 확인 함수
-function checkLoginStatus() {
-  $.ajax({
-    type: "GET",
-    url: "/check-login",
-    success: function (response) {
-      isLoggedIn = response.isLoggedIn;
-    },
-    error: function () {
-      isLoggedIn = false;
-    },
-  });
-}
-
 //캘린더
 function convertToISO(dateStr) {
   let date = new Date(dateStr);
@@ -296,36 +257,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 일정 추가
   function postUser() {
-    isLoggedIn = checkLoginStatus();
-    if (!isLoggedIn) {
-      alert("로그인 후 일정을 추가할 수 있습니다.");
-      return;
-    }
-    var title = $("#title").val();
-    var start = $("#start").val();
-    var end = $("#end").val();
-
     $.ajax({
-      type: "POST",
-      url: "/calendar",
-      data: {
-        title_give: title,
-        start_give: start,
-        end_give: end,
-      },
+      url: "/check-session",
+      type: "GET",
+      contentType: "application/json",
+      data: JSON.stringify({}),
       success: function (response) {
-        alert(response.message);
-        calendar.refetchEvents(); // 일정추가 후 달력 새로고침
+        if (response.success) {
+          var title = $("#title").val();
+          var start = $("#start").val();
+          var end = $("#end").val();
+
+          $.ajax({
+            type: "POST",
+            url: "/calendar",
+            data: {
+              title_give: title,
+              start_give: start,
+              end_give: end,
+            },
+            success: function (response) {
+              alert(response.message);
+              calendar.refetchEvents(); // 일정추가 후 달력 새로고침
+              updateEventColors()
+            },
+            error: function () {
+              alert("일정을 추가하는데 실패했습니다");
+            },
+          });
+        } else {
+          alert("일정을 추가하는데 실패했습니다.");
+          return false;
+        }
       },
       error: function () {
-        alert("일정을 추가하는데 실패했습니다");
+        alert("일정 추가 도중 오류가 발생했습니다.");
       },
     });
   }
 
   // 일정 추가 버튼 이벤트
   $("#addEventButton").on("click", function () {
-    checkLoginStatus();
+    postUser();
   });
 });
 

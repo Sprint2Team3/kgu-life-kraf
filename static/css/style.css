@@ -340,3 +340,19 @@ footer {
 .calendar::-webkit-scrollbar {
   display: none;
 }
+
+/* 닉네임 버튼과 드롭다운 크기 맞추기 */
+.dropdown-menu {
+  min-width: 100% !important;  /* 버튼 너비와 동일하게 */
+  overflow: hidden; /* 내부 요소가 튀어나오지 않도록 */
+  margin-top: 6px !important;
+  border: none !important;
+}
+
+/* 드롭다운 내부 버튼 스타일 */
+.dropdown-item {
+  color: white !important;
+  border-radius: 12px !important; /* 내부 버튼 둥글게 */
+  font-weight: bold; /* 텍스트 강조 */
+  background-color: rgba(204, 204, 204, 0.859) !important; /* 배경 흰색 */
+}
