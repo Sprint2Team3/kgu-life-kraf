@@ -181,18 +181,21 @@ footer {
   width: 100%;
   margin: 1% 5%;
   text-align: center;
+  cursor: pointer;
 }
 
 .lecture_building_div {
   width: 100%;
   margin: 1% 5%;
   text-align: center;
+  cursor: pointer;
 }
 
 .library_div {
   width: 100%;
   margin: 1% 5%;
   text-align: center;
+  cursor: pointer;
 }
 
 /* ### calendar design ### */
