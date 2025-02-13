@@ -110,6 +110,14 @@ def logout():
     session.pop('logined_email', None)
     return jsonify({'success': True}), 200
 
+@app.route('/check-login', methods=['GET'])
+def check_login():
+    print(223)
+    id = session.get('logined_email')
+    print(id)
+    return False
+
+
 @app.route('/calendar', methods=['GET'])
 def get_calendar():
     # 학사일정과 사용자 일정 데이터 가져오기
@@ -164,4 +172,4 @@ def test3():
     return render_template('test3.html', current_path=request.path)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False)
+    app.run(host='0.0.0.0', debug=True)
