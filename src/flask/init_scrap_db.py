@@ -39,15 +39,17 @@ def insert_academic_calendar() :
     #calendars = soup.select('#sc_con_202503 ul.info_box__list li.info_box__item')
     calendars = soup.select('.schedule_content__group .academic_info_box ul.info_box__list li.info_box__item')
 
-
     for calendar in calendars:
         date = calendar.select_one('div.info_box__date').get_text(strip=True)
         event = calendar.select_one('div.info_box__text p').get_text(strip=True)
-        doc = {
-            'date' : date,
-            'event' : event
-        }
-        db.academic_calendar.insert_one(doc)
+        # 이미 동일한 데이터가 있는지 확인
+        existing_event = db.academic_calendar.find_one({'date': date, 'event': event})
+
+        # 데이터가 존재하지 않으면 삽입
+        if not existing_event:
+            doc = {'date': date, 'event': event}
+            db.academic_calendar.insert_one(doc)
+
 
 if __name__ == '__main__':
     db.department_notice.drop()
