@@ -6,6 +6,24 @@
   font-weight: 250;
 }
 
+/* base.html 구조 */
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+}
+
+/* --- */
+
 .mt-100 {
   margin-top: 100px;
 }
@@ -143,7 +161,7 @@
 }
 
 .custom-rounded2 {
-  border-radius: 50px;
+  border-radius: 30px;
 }
 
 #hover {
@@ -177,14 +195,6 @@
   text-align: center;
 }
 
-/* footer */
-#footer_sub {
-  height: 100px;
-}
-
-#footer_main {
-  text-align: center;
-}
 /* ### calendar design ### */
 :root {
   --fc-event-bg-color: none;
@@ -322,4 +332,8 @@
 /* tooltip화살표 색상 */
 .tippy-box[data-placement^="top"] > .tippy-arrow::before {
   border-top-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.calendar::-webkit-scrollbar {
+  display: none;
 }
