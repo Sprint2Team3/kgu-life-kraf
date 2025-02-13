@@ -1,0 +1,110 @@
+{% extends "base.html" %} {% block title %}지도 | 크구라이프{% endblock %} {%
+block content %}
+<h5 class="mx-3 my-3 font-weight-bold">크구 맵</h5>
+<hr />
+<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey={{TMAP_API_key}}"></script>
+<div class="d-flex">
+  <div id="map_div"></div>
+  <div class="ml-4" style="width: 25%">
+    <p class="ml-3 text-center text-muted" style="background-color: #d7daf9">
+      통로가 이어져있어요
+    </p>
+    <div class="d-flex justify-content-between">
+      <button
+        class="btn btn-light flex-grow-1 mx-1 custom-rounded h6"
+        onclick="select_shortCut()"
+      >
+        지름길
+      </button>
+      <button
+        class="btn btn-light flex-grow-1 mx-1 custom-rounded h6"
+        onclick="select_lecture_building()"
+      >
+        강의동
+      </button>
+      <button
+        class="btn btn-light flex-grow-1 mx-1 custom-rounded h6"
+        onclick="select_library()"
+      >
+        공부장소
+      </button>
+    </div>
+
+    <hr />
+
+    <div id="shortCut" style="display: none">
+      <p class="ml-3 text-center text-muted" style="background-color: #befad8">
+        이 길은 편하고 가까워요
+      </p>
+      <p class="ml-3 text-center text-muted" style="background-color: #fec6d3">
+        이 길은 힘들고 멀어요
+      </p>
+      <div class="shortCut_div mt-3" onclick="shortCut1()">지름길1</div>
+      <div class="shortCut_div mt-3" onclick="shortCut2()">지름길2</div>
+      <div class="shortCut_div mt-3" onclick="shortCut3()">지름길3</div>
+      <div class="shortCut_div mt-3" onclick="shortCut4()">지름길4</div>
+    </div>
+    <div class="text-muted" id="lecture_building" style="display: none">
+      <div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building1()">
+          1. 진리관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building2()">
+          2. 성신관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building3()">
+          3. 애경관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building4()">
+          4. 예지관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building5()">
+          5. 덕문관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building6()">
+          6. 광교관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building7()">
+          7. 집현관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building8()">
+          8. 육영관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building9()">
+          9. 호연관
+        </div>
+        <div class="lecture_building_div mt-3" onclick="lecture_building10()">
+          10. 제2공학관
+        </div>
+      </div>
+    </div>
+    <div id="library">
+      <div class="library_div mt-3" onclick="library1()">아고라</div>
+      <div id="library1_detail" style="display: none">
+        <p class="text-muted ml-4">학생회관의 1층에 위치한 공부장소. <br /></p>
+      </div>
+      <div class="library_div mt-3" onclick="library2()">중앙도서관</div>
+      <div id="library2_detail" style="display: none">
+        <p class="text-muted ml-4">
+          <a href="https://library.kyonggi.ac.kr">도서관 링크</a>
+          에서 열람실 좌석 예약을 할 수 있어요<br />
+        </p>
+      </div>
+      <div class="library_div mt-3" onclick="library3()">2강의동</div>
+      <div id="library3_detail" style="display: none">
+        <p class="text-muted ml-4">
+          1층으로 가면 열람실을 이용할 수 있어요.<br />
+        </p>
+      </div>
+      <div class="library_div mt-3" onclick="library4()">7강의동</div>
+      <div id="library4_detail" style="display: none">
+        <p class="text-muted ml-4">
+          4층과 5층에 열람실이 있어 자유롭게 이용해요.<br />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}
