@@ -161,17 +161,5 @@ def add_event():
         
     return jsonify({'result':'success','message': '일정이 추가되었습니다'}), 201
 
-@app.route('/test5')
-def test5():
-    return render_template('calendar.html')
-
-@app.route('/test')
-def test():
-    return render_template('test.html', current_path=request.path)
-
-@app.route('/test3')
-def test3():
-    return render_template('test3.html', current_path=request.path)
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
