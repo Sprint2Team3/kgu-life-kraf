@@ -110,21 +110,21 @@ def logout():
     session.pop('logined_email', None)
     return jsonify({'success': True}), 200
 
-@app.route('/check-login', methods=['GET'])
-def check_login():
-    print(223)
+@app.route('/check-session', methods=['GET'])
+def check_session():
     id = session.get('logined_email')
-    print(id)
-    return False
-
+    if id == None :
+        return jsonify({'success': False}), 200
+    return jsonify({'success': True}), 200
 
 @app.route('/calendar', methods=['GET'])
 def get_calendar():
     # 학사일정과 사용자 일정 데이터 가져오기
     calendar_data = list(db.academic_calendar.find({}, {'_id': 0}))
 
+    user = session.get('logined_email')
     academic_events = []
-    user_events = list(db.user_calendar.find({}, {'_id': 0})) 
+    user_events = list(db.user_calendar.find({"user" : user}, {'_id': 0, 'user': 0})) 
 
     # 학사일정 처리
     for item in calendar_data:
@@ -153,8 +153,10 @@ def add_event():
     existing_event = db.user_calendar.find_one({'title': title_receive, 'start': start_receive, 'end': end_receive})
 
         # 데이터가 존재하지 않으면 삽입
+    user = session.get('logined_email')
+
     if not existing_event:
-        doc = {'title': title_receive, 'start': start_receive, 'end': end_receive}
+        doc = {'title': title_receive, 'start': start_receive, 'end': end_receive, 'user': user}
         db.user_calendar.insert_one(doc)
         
     return jsonify({'result':'success','message': '일정이 추가되었습니다'}), 201
