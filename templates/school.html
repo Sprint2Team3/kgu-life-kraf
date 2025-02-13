@@ -97,6 +97,7 @@
       <li><a href="#" class="text-dark category-item">KGU 포인트</a></li>
       <li><a href="#" class="text-dark category-item">메일 작성</a></li>
       <li><a href="#" class="text-dark category-item">휴∙복학 신청</a></li>
+      <li><a href="#" class="text-dark category-item">복사기 사용</a></li>
     </ul>
   </div>
   <!-- FAQ -->
@@ -118,7 +119,7 @@
       </div>
 
       <div id="faq-필수 앱" class="faq-item" style="display: none;">
-        <h3 class="mt-4">"학교 생활에 꼭 있어야 한다! 하는 필수 앱이 있나요?</h3>
+        <h3 class="mt-4">"학교 생활에 꼭 있어야 한다!" 하는 필수 앱이 있나요?</h3>
         <p class="text-muted mt-80">크구라이프에 꼭 필요한 세 가지 앱이 있어요.</p>
         <p class="text-muted"><strong>'코스모스'</strong>, <strong>'경기대전자출결'</strong>, <strong>'헤이영'</strong> 앱인데요.</p>
         <img src="{{ url_for('static', filename='/img/appScreenshot.png') }}"
@@ -126,7 +127,7 @@
           height="600"
         />
         <p class="text-muted"> <strong>'코스모스'</strong>앱은 LMS 사이트의 애플리케이션 버전이라고 생각하면 돼요. </p>
-        <p>로그인도 LMS 사이트와 같은 아이디와 비밀번호로 로그인 해주시면 됩니다.</p>
+        <p class="text-muted">로그인도 LMS 사이트와 같은 아이디와 비밀번호로 로그인 해주시면 됩니다.</p>
 
         <p class="text-muted mt-50"> <strong>'경기대전자출결'</strong>앱으로는 출석 체크가 이루어지기 때문에 꼭 ! 필수적으로 다운로드 해주셔야 해요. </p>
         <p class="text-muted">이 앱으로 본인의 시간표를 확인할 수 있고, 중요한 교내 공지사항이 쪽지로 알림이 온답니다. </p> 
@@ -143,7 +144,15 @@
         <h3 class="mt-4">수강신청이 너무 두려워요... 도와주세요.</h3>
         <p class="text-muted mt-80">두려워하지 마세요. 크랖이 있잖아요.</p>
         <p class="text-muted"> 무엇이든 연습만이 살 길! 크랖과 함께 수강신청 화면을 보면서 미리 연습해봐요. </p>
-        <p class="text-muted"> 수강신청 사이트는 <strong>이렇게</strong> 생겼어요.</p>
+
+        <em class="text-muted">- 수강신청 사이트는 <a href="http://sugang.kyonggi.ac.kr">여기</a> 로 ! </em>
+        
+        <p class="text-muted mt-80"> 수강신청 사이트는 <strong>이렇게</strong> 생겼어요.</p>
+        <img src="{{ url_for('static', filename='/img/sugangScreenshot.png') }}"
+        alt="경기대사이트로고"
+        height="500"
+      />
+
       </div>
       <div id="faq-KGU 포인트" class="faq-item" style="display: none;">
         <h3 class="mt-4">KGU 포인트 관련 제목</h3>
@@ -158,6 +167,10 @@
         <h3 class="mt-4" >휴∙복학 신청 관련 제목</h3>
         <p class="text-muted mt-80">휴∙복학 신청에 대한 상세 내용이 여기에 들어갑니다.</p>
       </div>
+      <div id="faq-복사기 사용" class="faq-item" style="display: none;">
+        <h3 class="mt-4" >복사기 사용 관련 제목</h3>
+        <p class="text-muted mt-80">복사기 사요에 대한 상세 내용이 여기에 들어갑니다.</p>
+      </div>     
     </div>
   </div>
 </div>
@@ -183,7 +196,7 @@
   }
 
   .faq-item {
-    margin-bottom: 20px;
+    margin-bottom: 120px;
     margin-top: 80px;
     margin-left: 30px;
   }
